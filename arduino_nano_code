@@ -1,0 +1,54 @@
+int Relay1 = 2;
+int Relay2 = 3;
+int Relay3 = 4;
+int Switch = 8;
+int Top = 7;
+int Bottom = 6;
+int flag;
+ 
+void setup() {
+pinMode (Relay1, OUTPUT);
+pinMode (Relay2, OUTPUT);
+pinMode (Relay3, OUTPUT);
+pinMode (Switch, INPUT);
+pinMode (Top, INPUT);
+pinMode (Bottom, INPUT);
+digitalWrite (Relay1, LOW);
+digitalWrite (Relay2, LOW);
+digitalWrite (Relay3, LOW);
+flag = 0;
+} 
+
+void loop() {
+if(Switch == HIGH && Bottom == HIGH)
+{
+  digitalWrite(Relay1, LOW);
+  digitalWrite(Relay2, HIGH);
+  digitalWrite(Relay3. HIGH);
+  delay(2000);
+  flag = 1;
+}
+if(Switch == HIGH && Top == HIGH)
+{
+  digitalWrite(Relay1, HIGH);
+  digitalWrite(Relay2, LOW);
+  digitalWrite(Relay3. HIGH);
+  delay(2000);
+  flag = 2;
+}
+if(Top == HIGH && flag == 1)
+{
+  digitalWrite (Relay1, LOW);
+  digitalWrite (Relay2, LOW);
+  digitalWrite (Relay3, LOW);
+  flag = 0;
+}
+
+if(Bottom == HIGH && flag == 2)
+{
+  digitalWrite (Relay1, LOW);
+  digitalWrite (Relay2, LOW);
+  digitalWrite (Relay3, LOW);
+  flag = 0;
+}
+}
